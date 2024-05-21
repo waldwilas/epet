@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+  Увійти
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <h2>Увійти</h2>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <form method="post">
+          {% csrf_token %}
+          {{ form }}
+          <div class="text-center">
+            <button class="btn btn-primary" type="submit">Увійти</button>
+          </div>
+        </form>
+        <div>
+          <a href="{% url 'signup' %}" class="link-primary">Зареєструватися</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %}TODO: remove{% endcomment %}
+  <script>
+    document.getElementById('id_username').value = 'test'
+    document.getElementById('id_password').value = '12345678@'
+  </script>
+{% endblock %}

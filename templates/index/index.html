@@ -1,0 +1,194 @@
+{% extends 'index/base.html' %}
+
+{% load static %}
+
+{% block title %}
+  єУлюбленець
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'img/carousel/img1.jpg' %}" width="100%" class="bd-placeholder-img" alt="" />
+          <div class="container">
+            <div class="carousel-caption text-start">
+              <h1>Здоров'я</h1>
+              <p>Слідкуй за вагою та вакцинаціями улюбленця</p>
+              <p>
+                <a class="btn btn-lg btn-primary" href="#purpose">Цікаво?</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'img/carousel/img2.jpg' %}" width="100%" class="bd-placeholder-img" alt="" />
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Найкращі спогади</h1>
+              <p>Збережи назавжди найкращі миті життя свого улюблення</p>
+              <p>
+                <a class="btn btn-lg btn-primary" href="#features">Дізнатися</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'img/carousel/img3.jpg' %}" width="100%" class="bd-placeholder-img" alt="" />
+          <div class="container">
+            <div class="carousel-caption text-end">
+              <h1>Усе в одному</h1>
+              <p>Зберігай спогади та слідкуй за здоров'ям свого друга</p>
+              <p>
+                <a class="btn btn-lg btn-primary"
+                  href="{% if user.is_authenticated %}
+                    {% url 'pets:index' %}
+                  {% else %}
+                    {{ '#join' }}
+                  {% endif %}">
+                  Почати
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="px-4 py-5 my-5 text-center" id="purpose">
+      <img class="d-block mx-auto mb-4" src="{% static 'img/index-purpose.jpg' %}" alt="" width="240" height="auto" />
+      <h1 class="display-5 fw-bold">Мета</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Допомогти вам якнайкраще піклуватися про своїх улюбленців</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a href="{% if user.is_authenticated %}
+              {% url 'pets:index' %}
+            {% else %}
+              {{ '#join' }}
+            {% endif %}"
+            class="btn btn-primary btn-lg px-4 gap-3">
+            Почати
+          </a>
+          <a href="#about" class="btn btn-outline-secondary btn-lg px-4">Дізнатися більше</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-divider"></div>
+
+    <div class="container px-4 py-5" id="features">
+      <h2 class="pb-2 border-bottom">Особливості</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex align-items-start">
+          <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+            <img src="{% static 'img/feature.svg' %}" alt="" width="40" height="40">
+          </div>
+          <div>
+            <h2>Додай улюбленця</h2>
+            <p>Додавай улюбленців різних видів: котики, песики, пацючки, морські свинки. А також вказуй їх ім'я, день народження, фото тощо</p>
+            <a href="{% if user.is_authenticated %}
+                {% url 'pets:index' %}
+              {% else %}
+                {{ '#join' }}
+              {% endif %}"
+              class="btn btn-primary">
+              Почати
+            </a>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+            <img src="{% static 'img/feature.svg' %}" alt="" width="40" height="40">
+          </div>
+          <div>
+            <h2>Історія параметрів</h2>
+            <p>Вимірюй улюбленця та зберігай тут: вага, зріст, фото тощо</p>
+            <a href="{% if user.is_authenticated %}
+                {% url 'pets:index' %}
+              {% else %}
+                {{ '#join' }}
+              {% endif %}"
+              class="btn btn-primary">
+              Почати
+            </a>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+            <img src="{% static 'img/feature.svg' %}" alt="" width="40" height="40">
+          </div>
+          <div>
+            <h2>Здоров'я</h2>
+            <p>Додавай сюди інформацію від ветеринарів: вакцинування, медогляди тощо</p>
+            <a href="{% if user.is_authenticated %}
+                {% url 'pets:index' %}
+              {% else %}
+                {{ '#join' }}
+              {% endif %}"
+              class="btn btn-primary">
+              Почати
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-divider"></div>
+
+    <div class="container col-xxl-8 px-4 py-5" id="about">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img src="{% static 'img/index-about-us.png' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy" />
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold lh-1 mb-3">Про нас</h1>
+          <p class="lead">Ми маленька команда людей, які дуже-дуже люблять тваринок. Ми хочемо, аби наші улюбленці жили якомога довше, бо без них нам буде дуже сумно.</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="{% if user.is_authenticated %}
+                {% url 'pets:index' %}
+              {% else %}
+                {{ '#join' }}
+              {% endif %}"
+              class="btn btn-primary btn-lg px-4 me-md-2">
+              Приєднатися
+            </a>
+            <a href="#purpose" class="btn btn-outline-secondary btn-lg px-4">Дізнатися більше</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-divider"></div>
+
+    {% if not user.is_authenticated %}
+      <div class="container col-xl-10 col-xxl-8 px-4 py-5" id="join">
+        <div class="row align-items-center g-lg-5 py-5">
+          <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Приєднуйтесь</h1>
+            <p class="col-lg-10 fs-4">Ваше здоров'я і ваших улюбленців у ваших руках.</p>
+          </div>
+          <div class="col-md-10 mx-auto col-lg-5">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <a href="{% url 'login' %}" class="btn btn-primary btn-lg px-4 me-md-2">Увійти</a>
+              <a href="{% url 'signup' %}" class="btn btn-outline-secondary btn-lg px-4">Зареєструватися</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

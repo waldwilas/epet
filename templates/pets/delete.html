@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+  Видалення Улюбленця {{ pet.name }}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>Ви дійсно хочете видалити "{{ pet.name }}"?</h2>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Підтвердити</button>
+      <a href="{% url 'pets:index' %}" class="btn btn-light">Скасувати</a>
+    </form>
+  </div>
+{% endblock %}

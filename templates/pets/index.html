@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+  Мої улюбленці
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <section class="py-3 text-center container">
+      <div class="row py-lg-3">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Мої улюбленці</h1>
+          <p class="lead text-muted">Клануся завжди вас любити та піклуватися</p>
+          <p>
+            <a href="{% url 'pets:add' %}" class="btn btn-primary my-2">Додати улюбленця</a>
+            <button type="button" class="btn btn-outline-primary my-2" data-bs-toggle="modal" data-bs-target="#patPatModal">Погладити всіх</button>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal fade" id="patPatModal" tabindex="-1" aria-labelledby="patPatModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="patPatModalLabel">Погладили улюбленців</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">Ви молодці, продовжуйте &hearts;</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Продовжити</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for pet in pets %}
+            <div class="col">
+              {% include 'pets/pet_card.html' %}
+            </div>
+          {% empty %}
+            <div>Ви ще не додали улюбленців</div>
+            <div>
+              <a class="btn btn-primary" href="{% url 'pets:add' %}">Додати улюбленця</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

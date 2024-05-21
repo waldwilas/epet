@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+  Мій улюбленець
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    {% include 'pets/pet_card.html' %}
+  </div>
+  <div class="container">
+    <a href="{% url 'pets:index' %}" class="btn btn-primary">Назад</a>
+  </div>
+{% endblock %}

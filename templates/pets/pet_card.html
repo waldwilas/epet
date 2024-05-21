@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="card shadow-sm">
+  <img class="rounded mx-auto d-block pet-img"
+    src="{% if pet.photo %}
+      {{ pet.photo.url }}
+    {% else %}
+      {% static 'img/pet-no-image.svg' %}
+    {% endif %}"
+    alt="{{ pet.name }}" />
+  <div class="card-body">
+    <h3>{{ pet.name }}</h3>
+    <p class="card-text">Народився {{ pet.birth_date }}</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <a href="{% url 'pets:show' pet.id %}" class="btn btn-sm btn-outline-secondary">Погладити</a>
+        <a href="{% url 'pets:edit' pet.id %}" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pen"></i></a>
+        <a href="{% url 'pets:delete' pet.id %}" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+      </div>
+      <small class="text-muted">{{ pet.get_type_display }} | {{ pet.age }}</small>
+    </div>
+  </div>
+</div>
