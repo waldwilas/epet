@@ -52,3 +52,6 @@ pipenv run python manage.py runserver
 - Bootstrap Examples https://getbootstrap.com/docs/5.2/examples/
 - Django Tutorial https://docs.djangoproject.com/en/5.0/intro/tutorial03/
 - Django Login, Logout, Signup, Password Change, and Password Reset https://learndjango.com/tutorials/django-login-and-logout-tutorial
+- deploy on pythonanywhere:
+    - create web app https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
+    - static files https://help.pythonanywhere.com/pages/DjangoStaticFiles
